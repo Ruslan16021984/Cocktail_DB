@@ -3,6 +3,7 @@ package com.carbit3333333.cocktail_db.domain
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.carbit3333333.cocktail_db.pojo.Categories
 import com.carbit3333333.cocktail_db.pojo.Drink
 import com.carbit3333333.cocktail_db.pojo.ListCategories
@@ -15,10 +16,14 @@ import io.reactivex.rxjava3.core.Single
 class CocktailViewModel(application: Application, private val serverCommunicator: ServerCommunicator
 ) :
     BaseViewModel(application) {
-    var list = listOf<Any>()
-    private var liveDataItems = SingleLiveIvent<List<Any>>()
 
-    fun getLiveDataItems(): SingleLiveIvent<List<Any>> {
+    private var list = listOf<Any>()
+    init {
+        getListCocktailCategories()
+    }
+    private var liveDataItems = MutableLiveData<List<Any>>()
+
+    fun getLiveDataItems(): MutableLiveData<List<Any>> {
         return liveDataItems
     }
     fun getListCocktailCategories(){
@@ -31,8 +36,8 @@ class CocktailViewModel(application: Application, private val serverCommunicator
             listOf(cat.strCategory, dr.drinks)
         }
         }?.subscribe { it ->
-
-            list = it
+            liveDataItems.value = it
+//            list = it
         }
     }
 }

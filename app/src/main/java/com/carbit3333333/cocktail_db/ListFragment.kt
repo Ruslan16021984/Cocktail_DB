@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carbit3333333.cocktail_db.adapters.AdapterCoctail
@@ -28,10 +29,12 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = AdapterCoctail(requireContext())
+        recycler_list.adapter = adapter
+       var list = (activity as MainActivity).viewModel?.getLiveDataItems()?.observe(activity as MainActivity, Observer {
+           adapter.coinInfoList = it
+       })
 
-       var list = (activity as MainActivity).viewModel?.getListCocktailCategories()
-        viewAdapter = AdapterCoctail(requireContext())
-        recycler_list.adapter = viewAdapter
     }
 
 
