@@ -2,11 +2,12 @@ package com.carbit3333333.cocktail_db.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.carbit3333333.cocktail_db.MainActivity
 import com.carbit3333333.cocktail_db.R
 import com.carbit3333333.cocktail_db.adapters.AdapterCoctail
@@ -22,6 +23,7 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
@@ -37,6 +39,18 @@ class ListFragment : Fragment() {
                 adapter.notifyDataSetChanged()
                 Log.e("List", list.toString())
             })
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.filter_main, menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        NavigationUI.onNavDestinationSelected(item, findNavController());
+        return super.onOptionsItemSelected(item);
 
     }
 }

@@ -25,11 +25,6 @@ class MainActivity : AppCompatActivity() {
         createDaggerDependency()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.filter_main, menu)
-        return true
-    }
-
     private fun createDaggerDependency() {
         (application as App).getViewModelComponent().inject(this)
     }

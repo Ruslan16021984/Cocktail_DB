@@ -11,9 +11,6 @@
         android:name="com.carbit3333333.cocktail_db.presentation.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
-        <action
-            android:id="@+id/action_listFragment_to_filterFragment"
-            app:destination="@id/filterFragment" />
     </fragment>
     <fragment
         android:id="@+id/filterFragment"
