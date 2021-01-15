@@ -5,6 +5,9 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
+    dataBinding {
+        enabled = true
+    }
     buildToolsVersion "29.0.3"
 
     defaultConfig {
@@ -92,5 +95,5 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.29.1'
     implementation "com.github.gilgoldzweig.Gencycler:gencycler:2.1.1"
     kapt "com.github.gilgoldzweig.Gencycler:compiler:2.1.1"
-//    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    kapt 'com.android.databinding:compiler:3.1.4'
 }

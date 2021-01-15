@@ -17,6 +17,7 @@ import javax.inject.Singleton
 @Module
 class ApiModule {
     companion object{
+        const val BASE_IMAGE_URL = "https://www.thecocktaildb.com/images/media/drink/"
         private val API_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
     }
     @Provides

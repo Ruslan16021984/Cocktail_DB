@@ -18,4 +18,9 @@ data class Drink(
     @Expose
     val  strDrinkThumb:String
 
-): GencyclerModel
+
+): GencyclerModel {
+    fun getFullImageUrl(): String {
+        return strDrinkThumb
+    }
+}

@@ -17,7 +17,6 @@ class CocktailViewModel(application: Application, private val serverCommunicator
 ) :
     BaseViewModel(application) {
 
-    private var list = listOf<Any>()
     init {
         getListCocktailCategories()
     }
@@ -33,11 +32,12 @@ class CocktailViewModel(application: Application, private val serverCommunicator
             it -> Observable.fromIterable(it)
         }?.flatMap {
            cat-> serverCommunicator.getListResponseCategory(cat.strCategory)?.map {dr->
-            listOf(cat.strCategory, dr.drinks)
+            dr.drinks.flatMap { rdi ->
+                mutableListOf(cat, rdi)
+            }
         }
-        }?.subscribe { it ->
+        }?.subscribe {
             liveDataItems.value = it
-//            list = it
         }
     }
 }

@@ -15,8 +15,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 class ServerCommunicator(private val mService: CocktailApi) {
-    var listCategories: List<Categories>?= null
-    var listDrinrs: List<Drink>?= null
     companion object{
         private val DEFAULT_TIMEOUT = 10
         private val DEFAULT_RETRY_ATTEMPTS = 4L
