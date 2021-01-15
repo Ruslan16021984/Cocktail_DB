@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName
 import goldzweigapps.com.annotations.annotations.GencyclerModel
 import goldzweigapps.com.annotations.annotations.GencyclerViewHolder
 
-@GencyclerViewHolder(R.layout.item_cockteil_info)
 data class ListDrinks (
     @SerializedName("drinks")
     @Expose

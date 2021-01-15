@@ -2,16 +2,10 @@ package com.carbit3333333.cocktail_db.domain
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.carbit3333333.cocktail_db.pojo.Categories
-import com.carbit3333333.cocktail_db.pojo.Drink
-import com.carbit3333333.cocktail_db.pojo.ListCategories
-import com.carbit3333333.cocktail_db.pojo.ListDrinks
-import com.carbit3333333.cocktail_db.presentation.widget.SingleLiveIvent
 import com.carbit3333333.cocktail_db.repository.server.ServerCommunicator
+import goldzweigapps.com.annotations.annotations.GencyclerModel
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
 
 class CocktailViewModel(application: Application, private val serverCommunicator: ServerCommunicator
 ) :
@@ -20,9 +14,9 @@ class CocktailViewModel(application: Application, private val serverCommunicator
     init {
         getListCocktailCategories()
     }
-    private var liveDataItems = MutableLiveData<List<Any>>()
+    private var liveDataItems = MutableLiveData<List<GencyclerModel>>()
 
-    fun getLiveDataItems(): MutableLiveData<List<Any>> {
+    fun getLiveDataItems(): MutableLiveData<List<GencyclerModel>> {
         return liveDataItems
     }
     fun getListCocktailCategories(){

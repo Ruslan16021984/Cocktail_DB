@@ -18,19 +18,20 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     var viewModel: CocktailViewModel? = null
         @Inject set
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       var list: MutableList<ListDrinks> = ArrayList()
+        var list: MutableList<GencyclerModel> = ArrayList()
         createDaggerDependency()
         var adapter = AdapterCoctail(this)
         rvCoinPriceList.adapter = adapter
         viewModel?.getLiveDataItems()
             ?.observe(this, Observer {
-                adapter.elements = it as MutableList<GencyclerModel>
+                list.addAll(it as MutableList<GencyclerModel>)
+                adapter.elements = list
                 adapter.notifyDataSetChanged()
-                Log.e("ListDrinksViewHolder", it.toString())
-
+                Log.e("List",list.toString())
             })
 
     }
