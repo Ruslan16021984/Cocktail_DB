@@ -22,18 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var list: MutableList<GencyclerModel> = ArrayList()
         createDaggerDependency()
-        var adapter = AdapterCoctail(this)
-        rvCoinPriceList.adapter = adapter
-        viewModel?.getLiveDataItems()
-            ?.observe(this, Observer {
-                list.addAll(it as MutableList<GencyclerModel>)
-                adapter.elements = list
-                adapter.notifyDataSetChanged()
-                Log.e("List",list.toString())
-            })
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
