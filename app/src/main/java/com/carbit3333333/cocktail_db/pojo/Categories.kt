@@ -12,5 +12,6 @@ import goldzweigapps.com.annotations.annotations.GencyclerViewHolder
 data class Categories(
     @SerializedName("strCategory")
     @Expose
-    val strCategory:String
+    val strCategory:String,
+    var check: Boolean = false
 ): GencyclerModel

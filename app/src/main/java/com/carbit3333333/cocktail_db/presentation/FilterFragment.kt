@@ -1,11 +1,16 @@
 package com.carbit3333333.cocktail_db.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import com.carbit3333333.cocktail_db.MainActivity
 import com.carbit3333333.cocktail_db.R
+import com.carbit3333333.cocktail_db.adapters.FilterAdapter
+import kotlinx.android.synthetic.main.fragment_filter.*
 
 /**
  * A simple [Fragment] subclass.
@@ -18,6 +23,17 @@ class FilterFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_filter, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        (activity as MainActivity).viewModel?.getLiveDataCategories()?.observe(requireActivity(), Observer {
+            Log.e("getLiveDataCategories", it.toString())
+            val adapter = FilterAdapter(activity as MainActivity, it)
+            adapter.setHasStableIds(true)
+            rvFilterList.adapter = adapter
+       })
     }
 
 }

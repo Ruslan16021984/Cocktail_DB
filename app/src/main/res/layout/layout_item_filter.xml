@@ -11,7 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="Categiry"
+            android:text="Category"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
@@ -20,10 +20,10 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <CheckBox
+            android:id="@+id/checkboxFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
-            android:layout_marginLeft="35dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="parent"

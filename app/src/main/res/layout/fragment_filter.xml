@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.FilterFragment">
 
@@ -15,24 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/layout_item_filter"
-        app:layout_constraintBottom_toTopOf="@id/btnApply"/>
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnApply"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="20dp"
-        android:backgroundTint="#492B7E"
-        android:text="Apply"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        app:cornerRadius="8dp"
-        app:layout_constraintTop_toBottomOf="@id/rvFilterList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:listitem="@layout/layout_item_filter"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

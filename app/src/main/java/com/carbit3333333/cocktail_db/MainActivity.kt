@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+    var list: MutableList<GencyclerModel> = ArrayList()
     var viewModel: CocktailViewModel? = null
         @Inject set
 

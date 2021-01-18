@@ -29,15 +29,14 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var list: MutableList<GencyclerModel> = ArrayList()
         var adapter = AdapterCoctail(requireContext())
+        var list = (activity as MainActivity).list
         rvCoinPriceList.adapter = adapter
         (activity as MainActivity).viewModel?.getLiveDataItems()
             ?.observe(requireActivity(), Observer {
                 list.addAll(it as MutableList<GencyclerModel>)
                 adapter.elements = list
                 adapter.notifyDataSetChanged()
-                Log.e("List", list.toString())
             })
 
     }
