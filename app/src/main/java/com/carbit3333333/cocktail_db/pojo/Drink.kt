@@ -19,7 +19,7 @@ data class Drink(
     val  strDrinkThumb:String
 
 
-): GencyclerModel {
+): Cell() {
     fun getFullImageUrl(): String {
         return strDrinkThumb
     }

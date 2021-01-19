@@ -14,4 +14,4 @@ data class Categories(
     @Expose
     val strCategory:String,
     var check: Boolean = false
-): GencyclerModel
+): Cell()
