@@ -93,7 +93,5 @@ dependencies {
     // Dagger
     implementation 'com.google.dagger:dagger:2.29.1'
     kapt 'com.google.dagger:dagger-compiler:2.29.1'
-    implementation "com.github.gilgoldzweig.Gencycler:gencycler:2.1.1"
-    kapt "com.github.gilgoldzweig.Gencycler:compiler:2.1.1"
     kapt 'com.android.databinding:compiler:3.1.4'
 }

@@ -1,12 +1,13 @@
 package com.carbit3333333.cocktail_db.domain
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.carbit3333333.cocktail_db.pojo.Categories
 import com.carbit3333333.cocktail_db.pojo.Cell
+import com.carbit3333333.cocktail_db.pojo.Drink
 import com.carbit3333333.cocktail_db.pojo.ListCategories
 import com.carbit3333333.cocktail_db.repository.server.ServerCommunicator
-import goldzweigapps.com.annotations.annotations.GencyclerModel
 import io.reactivex.rxjava3.core.Observable
 
 class CocktailViewModel(
@@ -21,7 +22,7 @@ class CocktailViewModel(
 
     private var liveDataItems = MutableLiveData<List<Cell>>()
     private var liveDataCategories = MutableLiveData<List<Categories>>()
-    fun getLiveDataCategories():MutableLiveData<List<Categories>>{
+    fun getLiveDataCategories(): MutableLiveData<List<Categories>> {
         return liveDataCategories
     }
 
@@ -38,16 +39,23 @@ class CocktailViewModel(
         }?.flatMap { cat ->
             serverCommunicator.getListResponseCategory(cat.strCategory)?.map { dr ->
                 dr.drinks.flatMap { rdi ->
-                    mutableListOf(cat,rdi)
+                    mutableSetOf(cat, rdi)
+
                 }
             }
         }?.subscribe {
+            //            Log.e("ListCocktail", it.toString())
+//            Log.e("subscribe", it.toString())
             liveDataItems.value = it
         }
+
+
     }
+
     fun getResponceForFilter() {
-        var listCategories:ListCategories? = null
-        serverCommunicator.getResponseCategories()?.map {it.drinks
+        var listCategories: ListCategories? = null
+        serverCommunicator.getResponseCategories()?.map {
+            it.drinks
         }?.subscribe {
             liveDataCategories.value = it
         }
