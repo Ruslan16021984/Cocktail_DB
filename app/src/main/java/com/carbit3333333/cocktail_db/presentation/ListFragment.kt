@@ -36,34 +36,9 @@ class ListFragment : Fragment() {
         (activity as MainActivity).viewModel?.getLiveDataItems()
             ?.observe(requireActivity(), Observer {
                 list.addAll(it as MutableList<Cell>)
-
-                var result = list.distinctBy {
-                    when (it) {
-                        is Categories-> {
-                            it.strCategory
-                        }
-                        is Drink ->{
-                            it.strDrink
-                        }
-                        else -> throw IllegalArgumentException("unknown view type $it") as Throwable
-                    }
-                }
-                Log.e("distinctBy", result.toString())
-                adapter.items = result as ArrayList<Cell>
+                adapter.items = list as ArrayList<Cell>
                 adapter.notifyDataSetChanged()
             })
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.filter_main, menu)
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        NavigationUI.onNavDestinationSelected(item, findNavController());
-        return super.onOptionsItemSelected(item);
 
     }
 }

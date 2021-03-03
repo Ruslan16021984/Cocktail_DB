@@ -40,16 +40,22 @@ class CocktailViewModel(
             serverCommunicator.getListResponseCategory(cat.strCategory)?.map { dr ->
                 dr.drinks.flatMap { rdi ->
                     mutableSetOf(cat, rdi)
-
                 }
             }
         }?.subscribe {
-            //            Log.e("ListCocktail", it.toString())
-//            Log.e("subscribe", it.toString())
-            liveDataItems.value = it
+            var result = it.distinctBy {
+                when (it) {
+                    is Categories -> {
+                        it.strCategory
+                    }
+                    is Drink -> {
+                        it.strDrink
+                    }
+                    else -> throw IllegalArgumentException("unknown view type $it") as Throwable
+                }
+            }
+            liveDataItems.value = result
         }
-
-
     }
 
     fun getResponceForFilter() {
